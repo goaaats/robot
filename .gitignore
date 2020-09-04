@@ -1,0 +1,6 @@
+# Compiled library files
+build
+lib
+*.elf
+*.arm9
+*.nds
