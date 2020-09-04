@@ -28,8 +28,6 @@ int frame = 0;
 
 GAME_MainState g_gameState;
 
-NE_Material *DebugText;
-
 /* CAMERA */
 
 NE_Camera *TSCamera;
