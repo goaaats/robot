@@ -3,9 +3,9 @@
 
 #include <NEMain.h>
 
-#define MAX_MATERIAL 3
-#define MAX_SPRITE 3
-#define MAX_MODEL 3
+#define MAX_MATERIAL 4
+#define MAX_SPRITE 1
+#define MAX_MODEL 1
 #define MAX_PALETTE 1
 
 typedef struct
@@ -25,7 +25,8 @@ typedef enum
 {
     MAT_MainCharaTex,
     MAT_SpriteTest,
-    MAT_TitleScreenBS
+    MAT_TitleScreenBS,
+    MAT_TextDebug
 } MaterialKind;
 
 typedef enum

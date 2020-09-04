@@ -86,11 +86,11 @@ void DrawBottomScreen(void)
 
 void SetUpTextAsset()
 {
-	DebugText = NE_MaterialCreate(); // Load RGB font
-	NE_MaterialTexLoadBMPtoRGBA(DebugText, (void *)debugtext_bmp_bin, true);
+	CreateMaterial(MAT_TextDebug);
+	NE_MaterialTexLoadBMPtoRGBA(GetMaterial(MAT_TextDebug), (void *)debugtext_bmp_bin, true);
 
-	NE_TextInit(TEXT_SLOT_DEBUG, // Font slot
-		    DebugText, // Image
+	NE_TextInit(TEXT_SLOT_DEBUG,
+		    GetMaterial(MAT_TextDebug),
 		    8, 8); // Size of one character (x, y)
 }
 
