@@ -17,6 +17,8 @@ enum MiniGameKind {
 };
 
 typedef struct {
+    long frame;
+
     enum ModeKind mode;
     enum MiniGameKind miniGame;
 

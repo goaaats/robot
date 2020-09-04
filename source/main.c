@@ -13,7 +13,7 @@
 
 #include "testsprite_bin.h"
 
-int frame = 0;
+GAME_MainState g_gameState;
 
 /* CONSTANT */
 
@@ -25,8 +25,6 @@ int frame = 0;
 #define MODEL_HEIGHT_OFFSET 2.5f
 
 /* END CONSTANT */
-
-GAME_MainState g_gameState;
 
 /* CAMERA */
 
@@ -46,8 +44,8 @@ void HandleCamInput()
 void DrawDebug()
 {
 	char text[180];
-	sprintf(text, "X: %f / Y: %f / Z: %f / D: %i / C: %d%% / %i",
-		f32tofloat(TSCamera->from[0]), f32tofloat(TSCamera->from[1]), f32tofloat(TSCamera->from[2]), g_gameState.overviewTurnDeg, NE_GetCPUPercent(), frame);
+	sprintf(text, "X: %f / Y: %f / Z: %f / D: %i / C: %d%% / %li",
+		f32tofloat(TSCamera->from[0]), f32tofloat(TSCamera->from[1]), f32tofloat(TSCamera->from[2]), g_gameState.overviewTurnDeg, NE_GetCPUPercent(), g_gameState.frame);
 	NE_TextPrint(0, 0, 0, NE_White, text);
 }
 
@@ -144,8 +142,8 @@ int main(void)
 	irqSet(IRQ_VBLANK, NE_VBLFunc);
 	irqSet(IRQ_HBLANK, NE_HBLFunc);
 
-	mmInitDefaultMem( (mm_addr)soundbank_bin );
-	mmLoad( MOD_ELYSIUM );
+	mmInitDefaultMem((mm_addr)soundbank_bin);
+	mmLoad(MOD_ELYSIUM);
 	//mmStart( MOD_ELYSIUM, MM_PLAY_LOOP );
 
 	// Init Nitro Engine in dual 3D mode
@@ -174,8 +172,7 @@ int main(void)
 		scanKeys();
 		uint32 keys = keysHeld();
 
-		printf("\x1b[0;0H%i", frame);
-		frame++;
+		g_gameState.frame++;
 
 		switch (g_gameState.mode)
 		{
